@@ -1,14 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import './styles/index.scss';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import Main from './pages/Main';
+import Login from './pages/Login';
+import Navbar from './components/Navbar';
+
+// 공통 Layout
+const Layout = () => {
+  return (
+    <>
+      {/* 공통 스타일 적용 하기 위함 */}
+      <Navbar />
+      {/* router dom 적용 element */}
+      <Outlet />
+    </>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        {/* Main router */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Login />} />
+          <Route path="main" element={<Main />} />
+        </Route>
+        
+        {/* login이라고 하면 바로 루트경로로 옮겨주기 위함 */}
+        <Route path="/login" element={<Layout />}>
+          <Route index element={<Login />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
