@@ -1,0 +1,110 @@
+@import '../variables.scss';
+
+nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: sticky;
+  top: 0;
+
+  background-color: $white;
+
+  .navbar-contents-box{
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
+    .user-circle{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #AD00FF;
+      color: #F4F5EF;
+
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    ul{
+      display: flex;
+      align-items: end;
+      gap: 1rem;
+
+      li{
+        font-weight: 700;
+        position: relative;
+
+        .main-category-name{
+          padding: .5rem 1.75rem;
+          cursor: pointer;
+          &:hover{
+            color: #7B9B4A;
+          }
+        }
+
+        .active{
+          position: absolute;
+          top: 1.3rem;
+          left: 50%;
+          transform: translate(-50%, 0);
+          height: 5rem;
+          width: 100%;
+          display: none;
+        }
+
+        .category-contents-box{
+          background-color: #434041;
+          border-radius: 12px;
+          color: #F4F5EF;
+          font-weight: 500;
+          width: max-content;
+          padding: 0.4rem 3rem;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.6rem;
+
+          position: absolute;
+          top: 4.4rem;
+          left: 50%;
+          transform: translate(-50%, 0);
+
+          transition: all .3s;
+          visibility: hidden;
+          opacity: 0;
+
+
+          .category-contents{
+            border-radius: 8px;
+            background-color: #434041;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            transition: all .4s;
+
+            &:hover{
+              background-color: #FFFFFF;
+              color: #7B9B4A;
+              cursor: pointer;
+            }
+          }
+        }
+
+        &:hover{
+          .active{
+            display: block;
+          }
+
+          .category-contents-box{
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
